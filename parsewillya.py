@@ -197,13 +197,12 @@ class Receipt:
                 # Stuff in bulk (e.g. candy) have an indented price on the next
                 # line instead (similiar to additional adjustments). Let's
                 # check if this is the case here.
-                name = self.trim_spaces(line)  # Save item name.
-                line = next(raw_text_it)
-                bulk_match = self.ADJUSTMENT_RE.fullmatch(line)
+                next_line = next(raw_text_it)
+                bulk_match = self.ADJUSTMENT_RE.fullmatch(next_line)
                 if bulk_match:
                     info = self.trim_spaces(bulk_match.group(1))
                     price = self.str_to_decimal(bulk_match.group(2))
-                    item = self.Item(name, price)
+                    item = self.Item(self.trim_spaces(line), price)
                     item.add_information(info)
                     self.items.append(item)
 
