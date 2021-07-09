@@ -127,7 +127,10 @@ class Receipt:
 
     # Sometimes extra information lines are not indented... These are the
     # exceptional ones encountered so far.
-    EXTRA_INFO_EXCEPTIONS = ["extrapris"]
+    EXTRA_INFO_EXCEPTIONS = [
+        "extrapris",
+        "kort datum",
+    ]
 
     @staticmethod
     def str_to_decimal(string):
