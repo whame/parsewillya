@@ -105,7 +105,7 @@ class Receipt:
 
                 string += ")"
 
-            string += f"\t {self.final_price}"
+            string += f"\t{self.final_price}"
 
             return string
 
