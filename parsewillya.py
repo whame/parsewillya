@@ -130,6 +130,7 @@ class Receipt:
     EXTRA_INFO_EXCEPTIONS = [
         "extrapris",
         "kort datum",
+        "halva priset",
     ]
 
     @staticmethod
