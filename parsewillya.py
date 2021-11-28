@@ -59,7 +59,7 @@ class Receipt:
         def add_information(self, info):
             """"Add extra information.
 
-            :param info: Information text..
+            :param info: Information text.
             """
             if not self.info:
                 self.info = info
