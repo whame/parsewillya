@@ -202,12 +202,26 @@ class Receipt:
                 # line instead (similiar to additional adjustments). Let's
                 # check if this is the case here.
                 next_line = next(raw_text_it)
+
+                # However, they may contain extra information before the
+                # adjustment...
+                info = ""
+                if not self.ADJUSTMENT_RE.fullmatch(next_line) and \
+                   self.INDENT_RE.fullmatch(next_line):
+                    info = self.trim_spaces(next_line)
+                    next_line = next(raw_text_it)
+
                 bulk_match = self.ADJUSTMENT_RE.fullmatch(next_line)
                 if bulk_match:
-                    info = self.trim_spaces(bulk_match.group(1))
                     price = self.str_to_decimal(bulk_match.group(2))
                     item = self.Item(self.trim_spaces(line), price)
+                    if info:
+                        # Add extra information from previous line first.
+                        item.add_information(info)
+
+                    info = self.trim_spaces(bulk_match.group(1))
                     item.add_information(info)
+
                     self.items.append(item)
 
                     continue
