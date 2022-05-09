@@ -111,8 +111,10 @@ class Receipt:
 
     # For seperators (used at the start and end of item list).
     SEPERATOR_RE = re.compile(r"^-{31}-+")
-    # Self checkout section.
-    SELF_CHECKOUT_RE = re.compile(r"^=+\s*\w+\s\w+\s*=+")
+    # Self checkout section. Sometimes the 'ä' in "självskanning" gets printed
+    # as '?' or '�'. This seems to happen if you register a buy on the last day
+    # of the month...
+    SELF_CHECKOUT_RE = re.compile(r"^=+\s*\w+\s[\w�?]+\s*=+")
     # For total item line.
     TOTAL_ITEMS_RE = re.compile(r"^\s*Totalt\s*(\d+)\s*var(?:or|a)")
     # For total cost line.
