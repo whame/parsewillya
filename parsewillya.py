@@ -114,7 +114,8 @@ class Receipt:
     # Self checkout section. Sometimes the 'ä' in "självskanning" gets printed
     # as '?' or '�'. This seems to happen if you register a buy on the last day
     # of the month...
-    SELF_CHECKOUT_RE = re.compile(r"^=+\s*\w+\s[\w�?]+\s*=+")
+    SELF_CHECKOUT_RE = re.compile(
+        r"^.*\s*[sS](tar|lu)t\s[sS]j[ä�?]lvscanning.*\s*")
     # For total item line.
     TOTAL_ITEMS_RE = re.compile(r"^\s*Totalt\s*(\d+)\s*var(?:or|a)")
     # For total cost line.
