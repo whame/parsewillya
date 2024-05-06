@@ -134,6 +134,7 @@ class Receipt:
         "extrapris",
         "kort datum",
         "halva priset",
+        "svinnsmart",
     ]
 
     @staticmethod
