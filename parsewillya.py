@@ -132,8 +132,9 @@ class Receipt:
     # exceptional ones encountered so far.
     EXTRA_INFO_EXCEPTIONS = [
         "extrapris",
-        "kort datum",
         "halva priset",
+        "kort datum",
+        "lågpris",
         "svinnsmart",
     ]
 
